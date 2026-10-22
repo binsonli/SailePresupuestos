@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#111111">
+<title>XV Años | Saile iE — Fotografía & Videografía</title>
+<style>
+  :root{--bg:#101010;--panel:#191919;--panel2:#202020;--text:#f6f3ee;--muted:#b7b1a8;--line:#35322e;--gold:#d6b982;--gold2:#f0dfbd}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55}
+  a{color:inherit;text-decoration:none}
+  img,video{display:block;max-width:100%}
+  .wrap{width:min(1160px,calc(100% - 40px));margin-inline:auto}
+  .topbar{position:sticky;top:0;z-index:10;background:rgba(16,16,16,.88);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.08)}
+  .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+  .brand{font-size:1.25rem;font-weight:800;letter-spacing:.04em;white-space:nowrap}.brand span{color:var(--gold)}
+  .brand small{display:block;font-size:.62rem;font-weight:500;letter-spacing:.19em;color:var(--muted);text-transform:uppercase;margin-top:-4px}
+  .navlinks{display:flex;align-items:center;gap:26px;color:#ddd;font-size:.88rem}
+  .navlinks a:hover{color:var(--gold2)}
+  .btn{display:inline-flex;justify-content:center;align-items:center;gap:8px;border:1px solid var(--gold);border-radius:999px;padding:12px 19px;font-size:.9rem;font-weight:700;transition:.2s;cursor:pointer}
+  .btn.primary{background:var(--gold);color:#15120c}.btn:hover{transform:translateY(-2px);filter:brightness(1.06)}
+  .hero{min-height:600px;display:grid;align-items:center;position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+  .hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,10,10,.96) 0%,rgba(10,10,10,.78) 46%,rgba(10,10,10,.12) 100%),url('/portada.jpg') center/cover;opacity:.88}
+  .hero-content{position:relative;padding:90px 0 100px;max-width:690px}
+  .eyebrow{color:var(--gold);text-transform:uppercase;font-size:.74rem;letter-spacing:.22em;font-weight:800}
+  h1{font-family:Georgia,"Times New Roman",serif;font-weight:500;font-size:clamp(3rem,7vw,6.5rem);line-height:.99;letter-spacing:-.045em;margin:18px 0 24px}
+  h1 em{color:var(--gold2);font-weight:400}
+  .hero p{max-width:550px;color:#ddd;font-size:1.08rem;margin:0 0 28px}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+  .scroll-note{margin-top:55px;color:#bdb7ad;font-size:.75rem;letter-spacing:.16em;text-transform:uppercase}
+  section{padding:86px 0}
+  .section-head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:30px}
+  .section-head h2{font-family:Georgia,"Times New Roman",serif;font-weight:400;font-size:clamp(2.1rem,4vw,3.3rem);line-height:1.08;margin:9px 0 0}
+  .section-head p{max-width:420px;color:var(--muted);margin:0}
+  .video-stage{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:18px;background:#090909}
+  .video-track{display:flex;transition:transform .45s ease}
+  .video-slide{flex:0 0 100%;min-width:0}
+  .video-frame{aspect-ratio:16/9;position:relative;background:linear-gradient(135deg,#28231c,#090909);display:grid;place-items:center;overflow:hidden}
+  .video-frame video{width:100%;height:100%;object-fit:cover;background:#0a0a0a}
+  .video-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;background:radial-gradient(circle at 50% 35%,rgba(214,185,130,.17),transparent 35%),linear-gradient(135deg,#26231e,#0c0c0c)}
+  .play{width:66px;height:66px;border:1px solid var(--gold);border-radius:50%;display:grid;place-items:center;color:var(--gold2);font-size:1.35rem;margin-bottom:14px;padding-left:4px}
+  .video-placeholder strong{font-family:Georgia,serif;font-size:clamp(1.4rem,3vw,2.4rem);font-weight:400}
+  .video-placeholder span{color:var(--muted);font-size:.85rem;margin-top:5px}
+  .video-caption{display:flex;align-items:center;justify-content:space-between;padding:17px 20px;gap:15px;background:#151515}
+  .video-caption strong{font-size:1rem}.video-caption span{font-size:.83rem;color:var(--muted)}
+  .carousel-controls{display:flex;gap:8px}
+  .round{border:1px solid #555;background:transparent;color:white;width:42px;height:42px;border-radius:50%;font-size:1.1rem;cursor:pointer}
+  .round:hover{border-color:var(--gold);color:var(--gold)}
+  .dots{display:flex;gap:7px;justify-content:center;padding:16px}
+  .dot{height:6px;width:22px;border:0;border-radius:8px;background:#555;cursor:pointer}.dot.active{background:var(--gold);width:34px}
+  .gallery-section{background:#151515}
+
+  
+
+.photo-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    grid-auto-rows: auto !important;
+    gap: 5px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.photo-grid > * {
+    grid-column: auto !important;
+    grid-row: auto !important;
+    min-width: 0;
+    margin: 0;
+}
+
+.photo-grid img {
+    display: block;
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+}
+
+/* CELULAR */
+@media screen and (max-width: 600px) {
+    .photo-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 4px;
+    }
+
+    .photo-grid img {
+        height: 200px;
+    }
+}
+  
+
+  .photo{position:relative;overflow:hidden;border-radius:12px;background:#28231d;min-height:0}
+  .photo img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;filter:saturate(.88)}
+  .photo:hover img{transform:scale(1.05)}
+  .photo:after{content:"";position:absolute;inset:40% 0 0;background:linear-gradient(transparent,rgba(0,0,0,.65));pointer-events:none}
+  .photo figcaption{position:absolute;z-index:1;left:14px;bottom:12px;font-size:.83rem;font-weight:650}
+  .p1{grid-column:span 5;grid-row:span 4}.p2{grid-column:span 3;grid-row:span 2}.p3{grid-column:span 4;grid-row:span 3}.p4{grid-column:span 3;grid-row:span 3}.p5{grid-column:span 4;grid-row:span 3}.p6{grid-column:span 5;grid-row:span 3}.p7{grid-column:span 3;grid-row:span 2}.p8{grid-column:span 4;grid-row:span 3}
+  .moment-strip{display:grid;grid-template-columns:repeat(6,minmax(160px,1fr));gap:12px;overflow-x:auto;padding:2px 2px 14px;scroll-snap-type:x mandatory}
+  .moment{scroll-snap-align:start;min-width:0}
+  .moment img{width:100%;height:305px;object-fit:cover;border-radius:10px;background:#2b2925}
+  .moment .num{font-size:.68rem;letter-spacing:.15em;color:var(--gold);margin-top:12px}
+  .moment h3{font-family:Georgia,serif;font-size:1.25rem;font-weight:400;margin:3px 0}
+  .moment p{font-size:.83rem;color:var(--muted);margin:0}
+  .pricing{background:#151515}
+  .pricing-intro{color:var(--muted);max-width:650px;margin:-10px 0 34px}
+  .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:stretch}
+  .price-card{position:relative;display:flex;flex-direction:column;padding:28px;border:1px solid var(--line);border-radius:16px;background:#1c1c1c}
+  .price-card.featured{border-color:var(--gold);background:linear-gradient(160deg,#29251e,#1b1b1b 55%);transform:translateY(-8px)}
+  .ribbon{position:absolute;top:0;right:22px;background:var(--gold);color:#17130c;font-size:.68rem;font-weight:850;text-transform:uppercase;letter-spacing:.1em;padding:7px 11px;border-radius:0 0 8px 8px}
+  .plan-label{font-size:.72rem;letter-spacing:.17em;text-transform:uppercase;color:var(--gold);font-weight:800}
+  .price-card h3{font-family:Georgia,serif;font-size:1.9rem;font-weight:400;margin:8px 0 2px}
+  .price{font-size:clamp(1.8rem,3vw,2.45rem);font-weight:800;letter-spacing:-.04em;margin:12px 0 0}
+  .price small{font-size:.75rem;color:var(--muted);font-weight:500;letter-spacing:0}
+  .crew{font-size:.83rem;color:var(--muted);min-height:45px;margin:4px 0 18px}
+  .rule{height:1px;background:var(--line);margin:0 0 18px}
+  .features{list-style:none;padding:0;margin:0 0 24px;display:grid;gap:12px;font-size:.9rem}
+  .features li{display:flex;gap:9px;align-items:flex-start}
+  .features li:before{content:"✓";color:var(--gold);font-weight:800}
+  .price-card .btn{margin-top:auto;width:100%}
+  .fineprint{font-size:.8rem;color:var(--muted);margin-top:22px}
+  .contact{padding:75px 0;background:#0b0b0b;border-top:1px solid var(--line)}
+  .contact-inner{display:flex;align-items:center;justify-content:space-between;gap:30px}
+  .contact h2{font-family:Georgia,serif;font-size:clamp(2rem,4vw,3.3rem);font-weight:400;margin:8px 0}
+  .contact p{color:var(--muted);max-width:600px;margin:0}
+  footer{padding:22px 0;color:#89847c;font-size:.78rem;border-top:1px solid #242424}
+  .footer-inner{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+  @media(max-width:850px){.navlinks{gap:14px}.navlinks a:not(.btn){display:none}.hero{min-height:540px}.cards{grid-template-columns:1fr;max-width:560px;margin-inline:auto}.price-card.featured{transform:none;order:-1}.crew{min-height:0}.photo-grid{grid-auto-rows:75px;gap:8px}.moment-strip{grid-template-columns:repeat(6,210px)}section{padding:66px 0}.section-head{align-items:start;flex-direction:column}.contact-inner{align-items:flex-start;flex-direction:column}}
+  @media(max-width:520px){.wrap{width:min(100% - 28px,1160px)}.nav{height:66px}.brand{font-size:1.1rem}.nav .btn{padding:10px 13px;font-size:.78rem}.hero{min-height:570px}.hero:before{background:linear-gradient(90deg,rgba(10,10,10,.9),rgba(10,10,10,.48)),url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=80') center/cover}.hero-content{padding:75px 0}.hero p{font-size:1rem}.scroll-note{margin-top:35px}.video-caption{align-items:flex-start}.video-caption span{display:block}.photo-grid{grid-template-columns:repeat(6,1fr);grid-auto-rows:68px}.p1{grid-column:span 4;grid-row:span 4}.p2{grid-column:span 2;grid-row:span 2}.p3{grid-column:span 3;grid-row:span 3}.p4{grid-column:span 3;grid-row:span 3}.p5{grid-column:span 3;grid-row:span 3}.p6{grid-column:span 3;grid-row:span 3}.p7{grid-column:span 3;grid-row:span 2}.p8{grid-column:span 3;grid-row:span 2}.photo figcaption{font-size:.72rem;left:9px;bottom:8px}.moment-strip{grid-template-columns:repeat(6,175px)}.moment img{height:180px}.price-card{padding:23px}.price{font-size:2.15rem}}
+
+
+
+.portada-logo {
+  height: 100vh;
+  height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: #080808;
+  scroll-snap-align: start;
+}
+
+.portada-logo img {
+  width: min(85%, 650px);
+  max-height: 75%;
+  object-fit: contain;
+}
+
+.portada-logo .bajar {
+  position: absolute;
+  bottom: 22px;
+  color: #c6a96b;
+  font-size: 11px;
+  letter-spacing: 3px;
+  animation: indicar 1.8s ease-in-out infinite;
+}
+
+@keyframes indicar {
+  50% { transform: translateY(6px); }
+}
+
+@media (max-width: 600px) {
+  .portada-logo img { width: 95%; }
+}
+
+
+.video-youtube {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.video-youtube iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+
+</style>
+</head>
+<body>
+
+
+<section class="portada-logo">
+  <img src="/saile.png" alt="Saile iE">
+  <div class="bajar">DESLIZÁ PARA CONTINUAR ↓</div>
+</section>
+
+
+<script>
+document.documentElement.style.scrollBehavior = "smooth";
+</script>
+
+
+<header class="topbar">
+  <div class="wrap nav">
+    <a class="brand" href="#inicio">Saile <span>iE</span><small>Fotografía & Videografía</small></a>
+    <nav class="navlinks" aria-label="Navegación principal">
+      <a href="#films">Films</a><a href="#galeria">Galería</a><a href="#momentos">Momentos</a><a href="#planes">Presupuesto</a>
+      <a class="btn" href="#contacto">Consultar fecha ↗</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+  <div class="wrap">
+    <div class="hero-content">
+      <div class="eyebrow">Una noche · Mil recuerdos</div>
+      <h1>Tu historia,<br><em>para siempre.</em></h1>
+      <p>Fotografía y cine para XV años. Cada emoción, cada abrazo y cada instante importante, contado con una mirada auténtica.</p>
+      <div class="hero-actions"><a class="btn primary" href="#planes">VER PRECIOS</a><a class="btn" href="#films">VER TRABAJOS ▶</a></div>
+      <div class="scroll-note">XV años · Cobertura fotográfica y audiovisual</div>
+    </div>
+  </div>
+</section>
+
+<section id="films">
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="eyebrow">Historias en movimiento</div><h2>Video, un recuerdo que<br>vuelve a sentirse.</h2></div>
+    </div>
+    <div class="video-stage">
+      <div class="video-track" id="videoTrack">
+        <article class="video-slide">
+          <div class="video-frame">
+
+                  <div class="video-youtube">
+                    <iframe
+                      src="https://www.youtube.com/embed/-nfGTkTFK4A"
+                      title="Video de Saile iE"
+                      loading="lazy"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowfullscreen>
+                    </iframe>
+                  </div>
+
+
+          </div>
+          <div class="video-caption"><div><strong>Film 3 Min · Muestra 1</strong><br><span>Los momentos más emocionantes</span></div><span>01 / 02</span></div>
+        </article>
+        <article class="video-slide">
+          <div class="video-frame">
+            <div class="video-youtube">
+                    <iframe
+                      src="https://www.youtube.com/embed/6QV5ljqlmfA"
+                      title="Video de Saile iE"
+                      loading="lazy"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowfullscreen>
+                    </iframe>
+                  </div>
+          </div>
+          <div class="video-caption"><div><strong>Film 3 Min· Muestra 2</strong><br><span>Detalles, emociones y momentos inolvidables</span></div><span>02 / 02</span></div>
+        </article>
+      </div>
+      <div class="dots" aria-label="Elegir video"><button class="dot active" aria-label="Mostrar video 1" data-slide="0"></button><button class="dot" aria-label="Mostrar video 2" data-slide="1"></button></div>
+    </div>
+    <div class="carousel-controls" style="justify-content:flex-end;margin-top:12px"><button class="round" id="prevVideo" aria-label="Video anterior">←</button><button class="round" id="nextVideo" aria-label="Video siguiente">→</button></div>
+  </div>
+</section>
+
+<section class="gallery-section" id="galeria">
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="eyebrow">La belleza de cada detalle</div><h2>Fotografías que<br>cuentan una historia.</h2></div>
+    </div>
+    <div class="photo-grid">
+      <figure class="photo p1"><img src="/foto (1).jpg" alt="Retrato de celebración" loading="lazy"><figcaption>Retratos</figcaption></figure>
+      <figure class="photo p2"><img src="/foto (2).jpg" alt="Decoración elegante" loading="lazy"><figcaption>Detalles</figcaption></figure>
+      <figure class="photo p3"><img src="/foto (3).jpg" alt="Celebración y salón" loading="lazy"><figcaption>La celebración</figcaption></figure>
+      <figure class="photo p4"><img src="/foto (4).jpg" alt="Retrato en evento" loading="lazy"><figcaption>Emociones</figcaption></figure>
+      <figure class="photo p5"><img src="/foto (5).jpg" alt="Mesa y decoración" loading="lazy"><figcaption>Ambientación</figcaption></figure>
+      <figure class="photo p6"><img src="/foto (6).jpg" alt="Fiesta y luces" loading="lazy"><figcaption>La fiesta</figcaption></figure>
+      <figure class="photo p7"><img src="/foto (7).jpg" alt="Flores y detalles" loading="lazy"><figcaption>Pequeños detalles</figcaption></figure>
+      <figure class="photo p8"><img src="/foto (8).jpg" alt="Evento social" loading="lazy"><figcaption>Momentos reales</figcaption></figure>
+      <figure class="photo p9"><img src="/foto (9).jpg" alt="Evento social" loading="lazy"><figcaption>Momentos reales</figcaption></figure>
+      <figure class="photo p10"><img src="/foto (10).jpg" alt="Evento social" loading="lazy"><figcaption>Momentos reales</figcaption></figure>
+      <figure class="photo p11"><img src="/foto (11).jpg" alt="Evento social" loading="lazy"><figcaption>Momentos reales</figcaption></figure>
+      <figure class="photo p12"><img src="/foto (12).jpg" alt="Evento social" loading="lazy"><figcaption>Momentos reales</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="momentos">
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="eyebrow">De principio a fin</div><h2>Cada capítulo<br>de tus XV.</h2></div>
+    </div>
+    <div class="moment-strip">
+      <article class="moment"><img src="/previa.jpg" alt="Preparativos previos" loading="lazy"><div class="num">01 — LA PREVIA</div><h3>Los preparativos</h3><p>Detalles, vestido y emoción antes de salir.</p></article>
+      <article class="moment"><img src="/protagonista.jpg" alt="Retratos de quinceañera" loading="lazy"><div class="num">02 — RETRATOS</div><h3>La protagonista</h3><p>Retratos para recordar toda la vida.</p></article>
+      <article class="moment"><img src="/comienzo.jpg" alt="Entrada al salón" loading="lazy"><div class="num">03 — LA ENTRADA</div><h3>Un gran comienzo</h3><p>La llegada y las primeras emociones.</p></article>
+      <article class="moment"><img src="/abrazo.jpg" alt="Brindis y cena" loading="lazy"><div class="num">04 — FAMILIA</div><h3>Abrazos y brindis</h3><p>Los momentos compartidos con los suyos.</p></article>
+      <article class="moment"><img src="/baile.jpg" alt="Pista de baile" loading="lazy"><div class="num">05 — LA FIESTA</div><h3>Que no pare</h3><p>Baile, amigos y toda la energía de la noche.</p></article>
+      <article class="moment"><img src="/parasiempre.jpg" alt="Recuerdos finales" loading="lazy"><div class="num">06 — EL RECUERDO</div><h3>Para siempre</h3><p>Una historia que vas a volver a vivir.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="pricing" id="planes">
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="eyebrow">Cobertura de XV años</div><h2>Elegí cómo querés<br>recordarlo.</h2></div>
+    </div>
+    <p class="pricing-intro">Tres opciones de cobertura fotográfica y audiovisual, pensadas para diferentes necesidades. Consultá por disponibilidad y personalizamos los detalles de tu evento.</p>
+    <div class="cards">
+      <article class="price-card">
+        <div class="plan-label">Plan 01</div><h3>Esencial</h3>
+        <div class="price">$750.000 <small>ARS</small></div>
+        <p class="crew">1 fotógrafo · 1 camarógrafo</p><div class="rule"></div>
+        <ul class="features">
+          <li>Cobertura de hasta 6 horas</li>
+          <li>Hasta 900 fotografías seleccionadas y editadas</li>
+          <li>1 VIDEO resumen de hasta 3 minutos</li>
+          <li>Entrega digital en alta calidad</li>
+        </ul>
+        <a class="btn" href="#contacto" data-plan="Esencial">Consultar este plan</a>
+      </article>
+      <article class="price-card featured">
+        <div class="ribbon">Más elegido</div>
+        <div class="plan-label">Plan 02</div><h3>Completo</h3>
+        <div class="price">$1.300.000 <small>ARS</small></div>
+        <p class="crew">2 fotógrafos · 1 videógrafo</p><div class="rule"></div>
+        <ul class="features">
+          <li>Cobertura de hasta 8 horas</li>
+          <li>Hasta 1.500 fotografías seleccionadas y editadas</li>
+          <li>1 VIDEO de hasta 7 minutos</li>
+          <li>Mayor variedad de encuadres y perspectivas</li>
+          <li>Entrega digital en alta calidad</li>
+        </ul>
+        <a class="btn primary" href="#contacto" data-plan="Completo">Consultar este plan</a>
+      </article>
+      <article class="price-card">
+        <div class="plan-label">Plan 03</div><h3>Premium</h3>
+        <div class="price">$1.900.000 <small>ARS</small></div>
+        <p class="crew">2 fotógrafos · 2 videógrafos</p><div class="rule"></div>
+        <ul class="features">
+          <li>Cobertura de hasta 10 horas, desde la previa hasta la fiesta</li>
+          <li>Hasta 2.000 fotografías seleccionadas y editadas</li>
+          <li>1 PELÍCULA de hasta 15 minutos</li>
+          <li>1 VIDEO resumen cinematográfico de hasta 3 minutos</li>
+          <li>Más ángulos y cobertura simultánea de momentos clave</li>
+          <li>Entrega digital en alta calidad</li>
+          <li>Traslado de hasta 200 km totales incluido</li>
+        </ul>
+        <a class="btn" href="#contacto" data-plan="Premium">Consultar este plan</a>
+      </article>
+    </div>
+    <p class="fineprint">* Precios orientativos sujetos a confirmación de fecha, ubicación y duración. El traslado incluido contempla hasta 200 km totales. Horas adicionales, alojamiento y requerimientos especiales se cotizan aparte. Las fotografías se seleccionan y editan; no se garantiza una cantidad de capturas sin editar.</p>
+  </div>
+</section>
+
+<section class="contact" id="contacto">
+  <div class="wrap contact-inner">
+    <div><div class="eyebrow">Hablemos de tus XV</div><h2>Tu fecha merece<br>una gran historia.</h2><p>Contanos la fecha, el lugar y qué tipo de cobertura estás buscando. Te ayudamos a elegir el plan ideal.</p></div>
+    <a class="btn primary" id="whatsappLink" href="https://wa.me/?text=Hola%20Saile%20iE%2C%20quiero%20consultar%20por%20la%20cobertura%20de%20XV%20a%C3%B1os." target="_blank" rel="noopener">Consultar por WhatsApp ↗</a>
+  </div>
+</section>
+</main>
+<footer><div class="wrap footer-inner"><span>© <span id="year"></span> Saile iE · Fotografía & Videografía</span><span>Jujuy, Argentina · Instantes eternos.</span></div></footer>
+<script>
+  const track=document.getElementById('videoTrack');
+  const dots=[...document.querySelectorAll('.dot')];
+  let current=0;
+  function showSlide(index){
+    current=(index+2)%2;
+    track.style.transform=`translateX(-${current*100}%)`;
+    dots.forEach((d,i)=>d.classList.toggle('active',i===current));
+  }
+  document.getElementById('prevVideo').addEventListener('click',()=>showSlide(current-1));
+  document.getElementById('nextVideo').addEventListener('click',()=>showSlide(current+1));
+  dots.forEach(d=>d.addEventListener('click',()=>showSlide(Number(d.dataset.slide))));
+  document.querySelectorAll('[data-plan]').forEach(link=>{
+    link.addEventListener('click',()=>{
+      const plan=link.dataset.plan;
+      document.getElementById('whatsappLink').href='https://wa.me/+5493885196400'+encodeURIComponent('Hola Saile iE, quiero consultar por el Plan '+plan+' para cobertura de XV años. ¿Tienen disponibilidad para mi fecha?');
+    });
+  });
+  document.getElementById('year').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
