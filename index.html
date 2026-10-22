@@ -371,8 +371,14 @@ document.documentElement.style.scrollBehavior = "smooth";
 <section class="contact" id="contacto">
   <div class="wrap contact-inner">
     <div><div class="eyebrow">Hablemos de tus XV</div><h2>Tu fecha merece<br>una gran historia.</h2><p>Contanos la fecha, el lugar y qué tipo de cobertura estás buscando. Te ayudamos a elegir el plan ideal.</p></div>
-    <a class="btn primary" id="whatsappLink" href="https://wa.me/?text=Hola%20Saile%20iE%2C%20quiero%20consultar%20por%20la%20cobertura%20de%20XV%20a%C3%B1os." target="_blank" rel="noopener">Consultar por WhatsApp ↗</a>
-  </div>
+   
+<a class="btn primary"
+   href="https://wa.me/5493885196400?text=Hola%20Saile%20iE%2C%20quiero%20consultar%20por%20la%20cobertura%20de%20XV%20a%C3%B1os."
+   target="_blank"
+   rel="noopener noreferrer">
+  Consultar por WhatsApp ↗
+</a>
+
 </section>
 </main>
 <footer><div class="wrap footer-inner"><span>© <span id="year"></span> Saile iE · Fotografía & Videografía</span><span>Jujuy, Argentina · Instantes eternos.</span></div></footer>
@@ -388,11 +394,7 @@ document.documentElement.style.scrollBehavior = "smooth";
   document.getElementById('prevVideo').addEventListener('click',()=>showSlide(current-1));
   document.getElementById('nextVideo').addEventListener('click',()=>showSlide(current+1));
   dots.forEach(d=>d.addEventListener('click',()=>showSlide(Number(d.dataset.slide))));
-  document.querySelectorAll('[data-plan]').forEach(link=>{
-    link.addEventListener('click',()=>{
-      const plan=link.dataset.plan;
-      document.getElementById('whatsappLink').href='https://wa.me/5493885196400'+encodeURIComponent('Hola Saile iE, quiero consultar por el Plan '+plan+' para cobertura de XV años. ¿Tienen disponibilidad para mi fecha?');
-    });
+   });
   });
   document.getElementById('year').textContent=new Date().getFullYear();
 </script>
